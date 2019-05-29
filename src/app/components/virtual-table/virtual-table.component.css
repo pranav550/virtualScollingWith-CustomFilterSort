@@ -1,0 +1,13 @@
+.example-viewport {
+    height: 700px;
+    width: 100%;
+    border: 1px solid black;
+}
+
+.example-item {
+    height: 50px;
+}
+
+.pointer {
+    cursor: pointer;
+}

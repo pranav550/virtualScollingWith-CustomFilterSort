@@ -1,0 +1,48 @@
+<header>
+  <nav class="navbar navbar-default">
+    <a class="navbar-brand" href="#">Virtual Scrolling</a>
+  </nav>
+</header>
+
+<nav class="navbar">
+  <input [(ngModel)]="searchText" placeholder="Search.." class="form-control" />
+</nav>
+
+<cdk-virtual-scroll-viewport itemSize="10" class="example-viewport">
+  <table class="table">
+    <thead>
+      <th class="pointer" (click)="setOrder('id')">Index</th>
+      <th class="pointer" (click)="setOrder('name')">Name</th>
+      <th class="pointer" (click)="setOrder('company')">company</th>
+      <th class="pointer" (click)="setOrder('department')">department</th>
+      <th class="pointer" (click)="setOrder('country')">country</th>
+      <th class="pointer" (click)="setOrder('email')">email</th>
+      <th class="pointer" (click)="setOrder('sales')">sales</th>
+      <th class="pointer" (click)="setOrder('rating')">rating</th>
+      <th class="pointer" (click)="setOrder('feedback')">feedback</th>
+      <th class="pointer" (click)="setOrder('address')">address</th>
+    </thead>
+    <tbody>
+      <tr
+        *cdkVirtualFor="
+          let item of filteredList
+            | grdFilter
+              : { name: searchText, Age: searchText, blog: searchText }
+            | orderBy: order:reverse:'case-insensitive'
+        "
+        class="example-item"
+      >
+        <td>{{ item.id }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.company }}</td>
+        <td>{{ item.department }}</td>
+        <td>{{ item.country }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.sales }}</td>
+        <td>{{ item.rating }}</td>
+        <td>{{ item.feedback }}</td>
+        <td>{{ item.address }}</td>
+      </tr>
+    </tbody>
+  </table>
+</cdk-virtual-scroll-viewport>
